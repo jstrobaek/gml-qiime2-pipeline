@@ -27,7 +27,14 @@
   #  │   ├── 05-derep
   #  │   ├── 06-dn-clust
   #  │   ├── 07-feat-table-summary
-  #  │   ├── 08-
+  #  │   ├── 08-dn-chim-filtered
+  #  │   ├── 09-feat-freq-filtered
+  #  │   ├──
+  #  │   ├──
+  #  │   ├──
+  #  │   ├──
+  #  │   ├──
+  #  │   ├── 
   #  │   └──
   #  │  
   #  └── scr
@@ -135,7 +142,51 @@ qiime vsearch cluster-features-de-novo \
 qiime feature-table summarize \
   --i-table "$PWD"/rst/06-dn-clust/table-dn-99.qza \
   --m-sample-metadata-file "$PWD"/data/metadata.tsv \
-  --o-visualization "$PWD"/rst/07-feat-table-summary/table-dn-99.qzv
+  --o-visualization "$PWD"/rst/07-prel-feat-table-summary/table-dn-99.qzv
 
 
-#
+# Skipped this step due to lack of information...
+# Filter out single sample features.
+# qiime feature-table filter-features \
+#   --i-table "$PWD"/rst/06-dn-clust/table-dn-99.qza \
+#   --p-min-samples 2 \
+#   --o-filtered-table "$PWD"/rst/06-dn-clust/1-sample-feat-filtered-table.qza
+
+# Run de novo chimera checking.
+# IF above step not skipped, change input to:
+# "$PWD"/rst/06-dn-clust/1-sample-feat-filtered-table.qza
+qiime vsearch uchime-denovo \
+  --i-table "$PWD"/rst/06-dn-clust/table-dn-99.qza \
+  --i-sequences "$PWD"/rst/06-dn-clust/rep-seqs-dn-99.qza \
+  --output-dir "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check
+
+# Summarize the chimera check.
+qiime metadata tabulate \
+  --m-input-file "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/stats.qza \
+  --o-visualization "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/stats.qzv
+
+# Filter out chimeras AND "boarderline" chimeras.
+qiime feature-table filter-features \
+  --i-table "$PWD"/rst/06-dn-clust/table-dn-99.qza \
+  --m-metadata-file \
+  "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/nonchimeras.qza \
+  --o-filtered-table \
+  "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/table-nonchim-wo-bl.qza
+
+qiime feature-table filter-seqs \
+  --i-data "$PWD"/rst/06-dn-clust/rep-seqs-dn-99.qza \
+  --m-metadata-file \
+  "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/nonchimeras.qza \
+  --o-filtered-data \
+  "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/rep-seqs-nonchim-wo-bl.qza
+
+qiime feature-table summarize \
+  --i-table "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qza \
+  --o-visualization "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qzv
+
+# Remove singletons.
+qiime feature-table filter-features \
+  --i-table "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qza \
+  --p-min-frequency 2 \
+  --o-filtered-table \
+  "$PWD"/rst/09-feat-freq-filtered/feature-frequency-filtered-table.qza
