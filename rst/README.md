@@ -1,8 +1,8 @@
-__Last Updated:__ 2020.05.07
+__Last Updated:__ 2020.05.22
 
 ## Directory Tree
 
-Visual summary of the results-directory structure, and its content. All folders with the naming convention _"nn-[...]-summary"_ contains QIIME 2 visualization files—files with the .qzv extension. These can be visualized with the QIIME 2 CLI:
+Visual summary of the results-directory structure, and its content. All files with the .qzv extention are QIIME 2 visualization files. These can be viewed in a browser by calling the following QIIME 2 CLI command:
 
 ```
 qiime tools view "$PWD"/rst/<folder>/<file>.qzv
