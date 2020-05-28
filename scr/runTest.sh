@@ -4,9 +4,9 @@
 # And, with the exeption of methods directly related to OTUs, the subsequent
 # analysis performed on the feature tables can be performed in a similar (or
 # identical) manner.
-
-
-# Commands where run from a project directory of the following structure:
+#
+# Commands used during testing, where run from a project directory of the
+# following structure:
   #  .
   #  ├── bin
   #  │  
@@ -78,10 +78,13 @@ paste data/id_tmp.tsv data/meta_tmp.tsv > data/metadata.tsv \
 
 # DATA IMPORT
 #
-# Import metadata-file.
+# [V] Import metadata-file.
 qiime metadata tabulate \
   --m-input-file "$PWD"/data/metadata.tsv \
-  --o-visualization "$PWD"/rst/00-import/metadata.qzv
+  --o-visualization "$PWD"/rst/00-import/metadata.qzv \
+  && \
+  qiime tools view "$PWD"/rst/00-import/metadata.qzv
+
 
 # Import FASTQ.gz-files to QIIME 2 data artifact (.qza)
 qiime tools import \
@@ -90,10 +93,12 @@ qiime tools import \
   --input-format CasavaOneEightSingleLanePerSampleDirFmt \
   --output-path "$PWD"/rst/00-import/demux-paired-end.qza
 
-# Summarize import output to QIIME 2 visualization artifact (.qzv)
+# [V] Summarize import output to QIIME 2 visualization artifact (.qzv)
 qiime demux summarize \
   --i-data "$PWD"/rst/00-import/demux-paired-end.qza \
-  --o-visualization "$PWD"/rst/01-demux-summary/demux-paired-end.qzv
+  --o-visualization "$PWD"/rst/01-demux-summary/demux-paired-end.qzv \
+  && \
+  qiime tools view "$PWD"/rst/01-demux-summary/demux-paired-end.qzv
 
 
 # JOIN PAIRS
@@ -103,10 +108,12 @@ qiime vsearch join-pairs \
   --i-demultiplexed-seqs "$PWD"/rst/00-import/demux-paired-end.qza \
   --o-joined-sequences "$PWD"/rst/02-join-pairs/demux-joined.qza
 
-# Summarize the join results.
+# [V] Summarize the join results.
 qiime demux summarize \
   --i-data "$PWD"/rst/02-join-pairs/demux-joined.qza \
-  --o-visualization "$PWD"/rst/03-demux-summary/demux-joined.qzv
+  --o-visualization "$PWD"/rst/03-demux-summary/demux-joined.qzv \
+  && \
+  qiime tools view "$PWD"/rst/03-demux-summary/demux-joined.qzv
 
 
 # QUALITY CONTROL
@@ -137,11 +144,13 @@ qiime vsearch cluster-features-de-novo \
   --o-clustered-table "$PWD"/rst/06-dn-clust/table-dn-99.qza \
   --o-clustered-sequences "$PWD"/rst/06-dn-clust/rep-seqs-dn-99.qza
 
-# Feature table summary.
+# [V] Feature table summary.
 qiime feature-table summarize \
   --i-table "$PWD"/rst/06-dn-clust/table-dn-99.qza \
   --m-sample-metadata-file "$PWD"/data/metadata.tsv \
-  --o-visualization "$PWD"/rst/07-prel-feat-table-summary/table-dn-99.qzv
+  --o-visualization "$PWD"/rst/07-prel-feat-table-summary/table-dn-99.qzv \
+  && \
+  qiime tools view "$PWD"/rst/07-prel-feat-table-summary/table-dn-99.qzv
 
 # Skipped this step due to lack of information, at the time. This could be
 # detrimental to the data analysis, depending on the upstream requirements of
@@ -161,10 +170,12 @@ qiime vsearch uchime-denovo \
   --i-sequences "$PWD"/rst/06-dn-clust/rep-seqs-dn-99.qza \
   --output-dir "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check
 
-# Summarize the chimera check.
+# [V] Summarize the chimera check.
 qiime metadata tabulate \
   --m-input-file "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/stats.qza \
-  --o-visualization "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/stats.qzv
+  --o-visualization "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/stats.qzv \
+  && \
+  qiime tools view "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/stats.qzv
 
 # Filter out chimeras AND "boarderline" chimeras from feature table.
 qiime feature-table filter-features \
@@ -174,10 +185,12 @@ qiime feature-table filter-features \
   --o-filtered-table \
   "$PWD"/rst/08-dn-chim-filtered/uchime-dn-check/table-nonchim-wo-bl.qza
 
-# Visualize prior artifact output.
+# [V] Visualize prior artifact output.
 qiime feature-table summarize \
   --i-table "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qza \
-  --o-visualization "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qzv
+  --o-visualization "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qzv \
+  && \
+  qiime tools view "$PWD"/rst/08-dn-chim-filtered/table-nonchim-wo-bl.qzv
 
 # Filter out chimeras AND "boarderline" chimeras from sequence artifact.
 qiime feature-table filter-seqs \
@@ -194,11 +207,13 @@ qiime feature-table filter-features \
   --o-filtered-table \
   "$PWD"/rst/09-feat-freq-filtered/feat-freq-filtered-table.qza
 
-# Visualize prior output.
+# [V] Visualize prior output.
 qiime feature-table summarize \
   --i-table "$PWD"/rst/09-feat-freq-filtered/feat-freq-filtered-table.qza \
   --o-visualization \
-  "$PWD"/rst/09-feat-freq-filtered/feat-freq-filtered-table.qzv
+  "$PWD"/rst/09-feat-freq-filtered/feat-freq-filtered-table.qzv \
+  && \
+  qiime tools view "$PWD"/rst/09-feat-freq-filtered/feat-freq-filtered-table.qzv
 
 # SCRIPT END
 #

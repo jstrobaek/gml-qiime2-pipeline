@@ -45,6 +45,15 @@ qiime demux summarize \
 # through the Gut Microbiome Labratory at Lund University.
 
 
+# ADAPTER REMOVAL
+#
+# Not used during this run: knowledge of the adapter nature was limited, so
+# DADA2 was used to arbitrarily trim the start of each sequence instead.
+# IF the adapter sequence is available, it can easily be trimmed of using the
+# cutadapt command, detailed here:
+# https://docs.qiime2.org/2020.2/plugins/available/cutadapt/trim-paired/
+
+
 # DENOISE AND JOIN
 #
 # Apply DADA2, where all cores are used when --p-n-threads is set to 0. As per
@@ -110,15 +119,15 @@ qiime taxa collapse \
   --i-table "$PWD"/rst/01-denoise-and-join/joined-table.qza \
   --i-taxonomy "$PWD"/rst/02-taxonomy/taxonomy.qza \
   --p-level 6 \
-  --o-collapsed-table "$PWD"/rst/01-denoise-and-join/taxa-table.qza
+  --o-collapsed-table "$PWD"/rst/02-taxonomy/taxa-l6-table.qza
 
 # [V] Summarize the taxa-table.
 qiime feature-table summarize \
-  --i-table "$PWD"/rst/01-denoise-and-join/taxa-table.qza \
+  --i-table "$PWD"/rst/02-taxonomy/taxa-l6-table.qza \
   --m-sample-metadata-file "$PWD"/data/metadata.tsv \
-  --o-visualization "$PWD"/rst/01-denoise-and-join/taxa-table.qzv \
+  --o-visualization "$PWD"/rst/02-taxonomy/taxa-l6-table.qzv \
   && \
-  qiime tools view "$PWD"/rst/01-denoise-and-join/taxa-table.qzv
+  qiime tools view "$PWD"/rst/02-taxonomy/taxa-l6-table.qzv
 
 
 # TAXONOMIC ANALYSIS
@@ -134,7 +143,7 @@ qiime taxa barplot \
 
 # [V] Produce heatmap.
 qiime feature-table heatmap \
-  --i-table "$PWD"/rst/01-denoise-and-join/taxa-table.qza \
+  --i-table "$PWD"/rst/02-taxonomy/taxa-l6-table.qza \
   --m-sample-metadata-file "$PWD"/data/metadata.tsv \
   --m-sample-metadata-column Treatment \
   --o-visualization "$PWD"/rst/02-taxonomy/taxa-treat-heatmap.qzv \
@@ -204,6 +213,7 @@ qiime diversity beta-group-significance \
   --p-pairwise
 
 # To test continous metadata:
+#
 # [...] you can use the qiime metadata distance-matrix in combination with
 # (qiime diversity mantel) and (qiime diversity bioenv) commands.
 
@@ -235,7 +245,36 @@ qiime emperor biplot \
   && \
   qiime tools view "$PWD"/rst/04-diversity/wei-unifrac-biplot.qzv
 
+# Biplot alternative:
+#
+# Generate biplots utilizing the community plugin DEICODE. Not included in
+# QIIME 2 core installation; see qiimeInstall_community-plugins.sh for help
+# with installation.
+# DO NOT RUN DEICODE with taxa-collapsed feature tables.
+qiime deicode rpca \
+  --i-table "$PWD"/rst/01-denoise-and-join/joined-table.qza \
+  --p-min-feature-count 10 \
+  --p-min-sample-count 500 \
+  --o-biplot "$PWD"/rst/04-diversity/aitchison-biplot.qza \
+  --o-distance-matrix "$PWD"/rst/04-diversity/aitchison-d-mat.qza
 
-# DIFFERENTIAL ABUNDANCE
-#
-#
+# [V] Visualize DEICODE biplot with Emperor.
+qiime emperor biplot \
+  --i-biplot "$PWD"/rst/04-diversity/aitchison-biplot.qza \
+  --m-sample-metadata-file "$PWD"/data/metadata.tsv \
+  --m-feature-metadata-file "$PWD"/rst/02-taxonomy/taxonomy.qza \
+  --o-visualization "$PWD"/rst/04-diversity/aitchison-biplot.qzv \
+  --p-number-of-features 8 \
+  && \
+  qiime tools view "$PWD"/rst/04-diversity/aitchison-biplot.qzv
+
+# [V] QURRO can be applied to a DEICODE biplot to further investigate the
+# feature loadings.
+qiime qurro loading-plot \
+  --i-table "$PWD"/rst/01-denoise-and-join/joined-table.qza \
+  --i-ranks "$PWD"/rst/04-diversity/aitchison-biplot.qza \
+  --m-sample-metadata-file "$PWD"/data/metadata.tsv \
+  --m-feature-metadata-file "$PWD"/rst/02-taxonomy/taxonomy.qza \
+  --o-visualization "$PWD"/rst/04-diversity/qurro-plot.qzv \
+  && \
+  qiime tools view "$PWD"/rst/04-diversity/qurro-plot.qzv

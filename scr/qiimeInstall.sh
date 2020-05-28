@@ -3,8 +3,8 @@
 # installed version of QIIME 2, see qiimeVersion.sh.
 
 
-    # FULL INSTALLATION OF LATEST VERSION OF ANACONDA
-
+# FULL INSTALLATION OF LATEST VERSION OF ANACONDA
+#
 # Install compatible version of Python
 sudo apt-get install python3.7
 
@@ -22,8 +22,8 @@ bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh
 conda update --all
 
 
-    # INSTALL QIIME 2 WITH CONDA
-
+# INSTALL QIIME 2 WITH CONDA
+#
 # Download the installation file
 wget "https://data.qiime2.org/distro/core/qiime2-2020.2-py36-linux-conda.yml"
 
@@ -37,8 +37,8 @@ conda activate /path/to/project/dir/qiime2_env
 qiime2 --help  # Produced no errors!
 
 
-    # TEST QIIME 2
-
+# TEST QIIME 2
+#
 # Create tutorial directory
 mkdir /path/to/project/dir/qmp-tutorial
 cd /path/to/project/dir/qmp-tutorial

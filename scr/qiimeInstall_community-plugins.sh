@@ -2,12 +2,38 @@
 # available for QIIME 2-2020.2.
 
 
-    # SECTION HEADER
+# DEICODE
+#
+# https://library.qiime2.org/plugins/deicode/19/
+#
+# Activate QIIME 2 environment.
+cd ~/<path>/<to>/<wd>/
+conda activate <q2_environment>
 
-# Step taken.
+# Install plugin with Anaconda.
+conda install -c conda-forge deicode
+
+# Refresh the QIIME 2 plugin cache.
+qiime dev refresh-cache
+
+# Check that the plugin responds.
+qiime deicode --help
 
 
+# QURRO
+#
+# https://library.qiime2.org/plugins/qurro/22/
+# https://github.com/biocore/qurro#installation-and-usage
+#
+# Activate QIIME 2 environment.
+cd ~/<path>/<to>/<wd>/
+conda activate <q2_environment>
 
-    # NEXT SECTION
+# Install plugin with Anaconda.
+conda install -c conda-forge qurro
 
-# Step taken.
+# Refresh the QIIME 2 plugin cache.
+qiime dev refresh-cache
+
+# Check that the plugin responds.
+qiime qurro --help
