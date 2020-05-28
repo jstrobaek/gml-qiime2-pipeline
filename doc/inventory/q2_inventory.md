@@ -660,6 +660,8 @@ __Description:__ MetaPhlAn is a computational tool for profiling the composition
 
 ### Install
 
+_This package is only available for older versions of QIIME 2, at the moment. Although, since MetaPhlAn3 just released, an updated version of this community plugin should be available in the near future._
+
 ```
 conda install q2-metaphlan2 -c fasnicar -c bioconda
 ```
