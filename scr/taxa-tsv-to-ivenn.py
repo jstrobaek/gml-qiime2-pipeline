@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+__doc__ = "Convert a BIOM TSV holding taxon-counts categorized by treatment."
+
 # IMPORT REQUIRED MODULES #####################################################
 from pathlib import Path
 import argparse
@@ -19,8 +21,8 @@ outdir.mkdir(parents=True, exist_ok=True)  # If the subdir "rst" does
 prog_usage = '''
 A highly specific program, that converts a BIOM TSV-file into Ivenn input
  format. Only intended for use with files originally output from QIIME 2,
- adhering to a specific formatting--for more detail,
- see <LINK-TO-GITHUB-README>.
+ adhering to a specific formating. For more detail,
+ see: https://github.com/yogogoba/gml-qiime2-pipeline/blob/master/scr/README.md
              '''
 parser = argparse.ArgumentParser(description=prog_usage)
 parser.add_argument(
@@ -127,3 +129,14 @@ with open(outfile, 'w') as output_file:
         else:
             print(key, ','.join(set(print_dict[key])), sep='', end=';\n',
                   file=output_file)
+
+
+# AUTHORSHIP INFORMATION ######################################################
+__author__ = "Joel Ströbaek"
+__copyright__ = "Copyright 2020, Joel Ströbaek"
+__credits__ = ["Stephen Burleigh"]
+__license__ = "GPLv3"
+__version__ = "1.0"
+__maintainer__ = "Joel Ströbaek"
+__email__ = "joel.strobaek@gmail.com"
+__status__ = "Prototype"
