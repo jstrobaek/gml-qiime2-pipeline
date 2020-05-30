@@ -150,6 +150,35 @@ qiime feature-table heatmap \
   && \
   qiime tools view "$PWD"/rst/02-taxonomy/taxa-treat-heatmap.qzv
 
+# Export required output to produce Venn diagram.
+#
+# Group and transpose the taxa-table.
+qiime feature-table group \
+  --i-table "$PWD"/rst/02-taxonomy/taxa-l6-table.qza \
+  --p-axis 'sample' \
+  --p-mode 'sum' \
+  --m-metadata-file "$PWD"/data/metadata.tsv \
+  --m-metadata-column 'Treatment' \
+  --o-grouped-table "$PWD"/rst/02-taxonomy/grouped-taxa-l6-table.qza
+
+qiime feature-table transpose \
+  --i-table "$PWD"/rst/02-taxonomy/grouped-taxa-l6-table.qza \
+  --o-transposed-feature-table \
+  "$PWD"/rst/02-taxonomy/transposed-grouped-taxa-l6-table.qza
+
+# Export the formated taxa-table to BIOM file.
+qiime tools export \
+  --input-path "$PWD"/rst/02-taxonomy/transposed-grouped-taxa-l6-table.qza \
+  --output-path "$PWD"/rst/00-export
+
+# Convert the QIIME 2 BIOM file to TSV, which can be reformated with the
+# program "$PWD"/scr/taxa-tsv-to-ivenn.py--and subsequently uploaded to
+# http://www.interactivenn.net/ for Ivenn creation.
+biom convert \
+  -i rst/00-export/feature-table.biom \
+  -o rst/00-export/feat-table.tsv \
+  --to-tsv
+
 
 # CORE FEATURES
 #
