@@ -9,14 +9,6 @@ import csv
 import re
 
 
-# PATH & FILE DEFINING ########################################################
-path = Path(__file__).resolve().parent.parent  # Set to bin dirs
-                                               # parent dir.
-outdir = Path(path)/"rst"/"00-export"
-outdir.mkdir(parents=True, exist_ok=True)  # If the subdir "rst" does
-                                           # not exit create it.
-
-
 # ARGUMENT PARSER #############################################################
 prog_usage = '''
 A highly specific program, that converts a BIOM TSV-file into Ivenn input
@@ -55,6 +47,15 @@ parser.add_argument(
 args = parser.parse_args()
 
 
+# PATH & FILE DEFINING ########################################################
+path = Path(args.infile).resolve().parent  # Set to input file directory.
+
+outdir = Path(path)/"ivenn_input_files"
+outdir.mkdir(parents=True, exist_ok=True)  # If the subdir does
+                                           # not exit create it.
+
+
+# MAIN CODE ###################################################################
 # Convert level from integer to the corresponding character.
 taxonomic_levels = {1:'k', 2:'p', 3:'c', 4:'o', 5:'f', 6:'g', 7:'s'}
 level = taxonomic_levels[args.set_level]  # Defaults to 6 (genus).
