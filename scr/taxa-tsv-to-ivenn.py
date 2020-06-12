@@ -13,7 +13,7 @@ import re
 prog_usage = '''
 A highly specific program, that converts a BIOM TSV-file into Ivenn input
  format. Only intended for use with files originally output from QIIME 2,
- adhering to a specific formating. For more detail,
+ adhering to a specific formatting. For more detail,
  see: https://github.com/yogogoba/gml-qiime2-pipeline/blob/master/scr/README.md
              '''
 parser = argparse.ArgumentParser(description=prog_usage)
