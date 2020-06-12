@@ -172,8 +172,8 @@ qiime tools export \
   --output-path "$PWD"/rst/00-export
 
 # Convert the QIIME 2 BIOM file to TSV, which can be reformated with the
-# program "$PWD"/scr/taxa-tsv-to-ivenn.py--and subsequently uploaded to
-# http://www.interactivenn.net/ for Ivenn creation.
+# program taxa-tsv-to-ivenn.py--and, subsequently uploaded to
+# http://www.interactivenn.net/ for Venn diagram generation.
 biom convert \
   -i rst/00-export/feature-table.biom \
   -o rst/00-export/feat-table.tsv \

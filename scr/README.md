@@ -84,7 +84,7 @@ Follows the [Moving Pictures tutorial](https://docs.qiime2.org/2020.2/tutorials/
 
 This script file also contains the bash commands used to reformat the metadata associated with the GML dataset. These commands are added below, if this should be the only thing of interest pertaining to this file.
 
-Move specified FASTQ files to the QIIME 2 input folder, based on the SampleID stored in the WN column of the mapping file:
+_Move specified FASTQ files to the QIIME 2 input folder, based on the SampleID stored in the WN column of the mapping file:_
 
 ```
 cut -f5 "$PWD"/data/samples-origin/Joel_map.csv | tail -n+2 | \
@@ -94,14 +94,14 @@ cut -f5 "$PWD"/data/samples-origin/Joel_map.csv | tail -n+2 | \
   done
 ```
 
-Fetch relevant metadata from original mapping file:
+_Fetch relevant metadata from original mapping file:_
 
 ```
 cut -f2,7,12,13,14,15,16,17,18,19,20 "$PWD"/data/samples-origin/Joel_map.csv \
   > "$PWD"/data/meta_tmp.tsv
 ```
 
-Construct SampleID column with correct IDs:
+_Construct SampleID column with correct IDs:_
 
 ```
 echo 'SampleID' > data/id_tmp.tsv | cut -f5 data/samples-origin/Joel_map.csv | \
@@ -112,7 +112,7 @@ echo 'SampleID' > data/id_tmp.tsv | cut -f5 data/samples-origin/Joel_map.csv | \
   done
 ```
 
-Join SampleID to metadata:
+_Join SampleID to metadata:_
 
 ```
 paste data/id_tmp.tsv data/meta_tmp.tsv > data/metadata.tsv \
@@ -121,6 +121,7 @@ paste data/id_tmp.tsv data/meta_tmp.tsv > data/metadata.tsv \
 
 ### [runMaster.sh](./runMaster.sh)
 
+Main QIIME 2 pipeline, which was used to produce the QIIME 1 equivalent output reported in the [QIIME 1 checklist](../doc/inventory/q1_checklist.md). Also includes the commands needed to produce, and export, the required input for [taxa-tsv-to-ivenn.py](./taxa-tsv-to-ivenn.py). Constitutes a rudimentary microbiome analysis backbone, which could be expanded upon given further resources.
 
 
 # References
