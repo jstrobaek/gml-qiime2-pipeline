@@ -1,5 +1,3 @@
-__Last Updated:__ 2020.06.12
-
 ## Directory Tree
 
 Visual summary of the results-directory structure, and its content after running the commands of [runMaster.sh](../scr/runMaster.sh). All files with the .qzv extention are QIIME 2 visualization files. These can be viewed in a browser by calling the following QIIME 2 CLI command:
