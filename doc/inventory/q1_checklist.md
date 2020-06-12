@@ -1,8 +1,5 @@
-#### Notes
+The referenced files are produced by running the commands found in [runMaster.sh](../../scr/runMaster.sh).
 
-Tutorial on how to [integrate QIIME 2 output in R](https://forum.qiime2.org/t/tutorial-integrating-qiime2-and-r-for-data-visualization-and-analysis-using-qiime2r/4121), while keeping provenance.
-
-Download the archived and compressed .qzv-files from [here](https://lu.box.com/s/u3kd6smwqvaim07phadlrg1panoz9b4j).
 
 ## Output checklist
 
@@ -20,8 +17,9 @@ Download the archived and compressed .qzv-files from [here](https://lu.box.com/s
  - What tests specifically?
 
 
-- [ ] ~venn diagrams of shared features (between samples)~
- - _Should be easy enough to produce by exporting the core-feat-data_
+- [x] venn diagrams of shared features (between samples)
+ - Solved with [taxa-tsv-to-ivenn.py](../../scr/taxa-tsv-to-ivenn.py)
+   - See [script README](../../scr/README.md) for details
 
 
 - [x] beta diversity & pairwise comparisons & stat comparison of treatments
@@ -79,3 +77,8 @@ Download the archived and compressed .qzv-files from [here](https://lu.box.com/s
 
 - [ ] ~biplot biomarker/taxa/treatment (Simca)~
  - [Might be solvable by extended use of metadata](https://forum.qiime2.org/t/how-to-output-metadata-as-an-artifact/10338)
+
+
+#### Future additions
+
+Tutorial on how to [integrate QIIME 2 output in R](https://forum.qiime2.org/t/tutorial-integrating-qiime2-and-r-for-data-visualization-and-analysis-using-qiime2r/4121), while keeping provenance.
