@@ -82,30 +82,39 @@ Follows the [Moving Pictures tutorial](https://docs.qiime2.org/2020.2/tutorials/
 
 #### Metadata reformatting
 
-This script file also contains the code used to reformat the metadata associated with the GML dataset. These commands are added below, if this is the only thing of interest pertaining to this file.
+This script file also contains the bash commands used to reformat the metadata associated with the GML dataset. These commands are added below, if this should be the only thing of interest pertaining to this file.
+
+Move specified FASTQ files to the QIIME 2 input folder, based on the SampleID stored in the WN column of the mapping file:
 
 ```
-<!-- Move specified FASTQ files to the QIIME 2 input folder, based on the -->
-<!-- SampleID stored in the WN column of the mapping file. -->
 cut -f5 "$PWD"/data/samples-origin/Joel_map.csv | tail -n+2 | \
   while read ID; do \
   mv \
   "$PWD"/data/samples-origin/"$ID"/Files/*.gz "$PWD"/data/samples-fastq-gz/; \
   done
+```
 
-<!-- Fetch relevant metadata from original mapping file. -->
+Fetch relevant metadata from original mapping file:
+
+```
 cut -f2,7,12,13,14,15,16,17,18,19,20 "$PWD"/data/samples-origin/Joel_map.csv \
   > "$PWD"/data/meta_tmp.tsv
+```
 
-<!-- Construct SampleID column with correct IDs. -->
+Construct SampleID column with correct IDs:
+
+```
 echo 'SampleID' > data/id_tmp.tsv | cut -f5 data/samples-origin/Joel_map.csv | \
   tail -n+2 | \
   while read ID; do \
   grep 'Name:' data/samples-origin/"$ID"/SampleProperties | \
   cut -d' ' -f2 >> data/id_tmp.tsv; \
   done
+```
 
-<!-- Join SampleID to metadata. -->
+Join SampleID to metadata:
+
+```
 paste data/id_tmp.tsv data/meta_tmp.tsv > data/metadata.tsv \
   && rm data/*_tmp.tsv
 ```
