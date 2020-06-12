@@ -5,7 +5,7 @@
 # analysis performed on the feature tables can be performed in a similar (or
 # identical) manner.
 #
-# Commands used during testing, where run from a project directory of the
+# Commands used during testing, were run from a project directory of the
 # following structure:
   #  .
   #  ├── bin
@@ -36,20 +36,28 @@
   #  │  
   #  └── scr
 
+# Commands that produce visualization files are preceeded by a comment starting
+# with [V]. They also include a logical pipe (&&), that calls the command to
+# open the visual output in the default web-browser.
 
-# RE-FORMAT MAPPING FILE0
+# RE-FORMAT MAPPING FILE
 #
 # ... to adhere to QIIME 2 header requirements:
 # https://docs.qiime2.org/2020.2/tutorials/metadata/
-# And, remove columns that does not hold any relevant information.
+#
+# And, remove columns that does not hold any (to this project) relevant
+# information.
+#
   # sed 's/#//' "$PWD"/data/samples-origin/Joel_map.csv | \
   #   cut -f1,2,12,13,14,15,16,17,18,19,20 > "$PWD"/data/map_meta.tsv
 #
 # EDIT! The above commented out code was replaced:
 # An error produced when summarizing the feature tables introduced the need
-# to re-format the metadata-file... This was due to an inconsistency, where
+# to re-format the metadata-file. This was due to an inconsistency, where
 # the assigned metadata SampleID did not correspond to the CASAVA FASTQ-file
-# naming convention (or the SampleID given in the supporting file).
+# naming convention (or the SampleID given in the supporting file). This is
+# a requirement introduced through the new data provenance structure, for
+# QIIME 2.
 #
 # Move specified FASTQ files to the QIIME 2 input folder, based on the
 # SampleID stored in the WN column of the mapping file.
