@@ -74,7 +74,7 @@ Download the archived and compressed .qzv-files from [here](https://lu.box.com/s
 
 
 - [ ] abundance of biomarker per treatment
- - _Haven't produced (need instructions on how to incorporate "biomarker metadata"), but should be easy enough_
+ - _Haven't produced (need proper "biomarker metadata"), but should be easy enough_
 
 
 - [ ] ~biplot biomarker/taxa/treatment (Simca)~
