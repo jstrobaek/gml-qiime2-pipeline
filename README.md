@@ -19,26 +19,26 @@ A report tied to this educational project can be viewed [here]() (not yet availa
 The repository holds the following files, within the given structure:
 
 - __data/__
- - [metadata.tsv](./data/metadata.tsv)
+    - [metadata.tsv](./data/metadata.tsv)
 
 
 - doc/__inventory/__
- - [q1_checklist.md](./doc/inventory/q1_checklist.md)
- - [q2_inventory.md](./doc/inventory/q2_inventory.md)
+    - [q1_checklist.md](./doc/inventory/q1_checklist.md)
+    - [q2_inventory.md](./doc/inventory/q2_inventory.md)
 
 
 - __rst/__
- - [README.md](./rst/README.md)
+    - [README.md](./rst/README.md)
 
 
 - __scr/__
- - [ERROR_log.md](./scr/ERROR_log.md)
- - [README.md](./scr/README.md)
- - [qiimeInstall.sh](./scr/qiimeInstall.sh)
- - [qiimeInstall_community-plugins.sh](./scr/qiimeInstall_community-plugins.sh)
- - [runMaster.sh](./scr/runMaster.sh)
- - [runTest.sh](./scr/runTest.sh)
- - [taxa-tsv-to-ivenn.py](./scr/taxa-tsv-to-ivenn.py)
+    - [ERROR_log.md](./scr/ERROR_log.md)
+    - [README.md](./scr/README.md)
+    - [qiimeInstall.sh](./scr/qiimeInstall.sh)
+    - [qiimeInstall_community-plugins.sh](./scr/qiimeInstall_community-plugins.sh)
+    - [runMaster.sh](./scr/runMaster.sh)
+    - [runTest.sh](./scr/runTest.sh)
+    - [taxa-tsv-to-ivenn.py](./scr/taxa-tsv-to-ivenn.py)
 
 ### Summary
 
