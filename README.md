@@ -21,6 +21,7 @@ The repository holds the following files, within the given structure:
 - __data/__
  - [metadata.tsv](./data/metadata.tsv)
 
+
 - doc/__inventory/__
  - [q1_checklist.md](./doc/inventory/q1_checklist.md)
  - [q2_inventory.md](./doc/inventory/q2_inventory.md)
