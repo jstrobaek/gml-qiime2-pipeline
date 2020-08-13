@@ -34,11 +34,13 @@ The repository holds the following files, within the given structure:
 - __scr/__
     - [ERROR_log.md](./scr/ERROR_log.md)
     - [README.md](./scr/README.md)
-    - [qiimeInstall.sh](./scr/qiimeInstall.sh)
-    - [qiimeInstall_community-plugins.sh](./scr/qiimeInstall_community-plugins.sh)
-    - [runMaster.sh](./scr/runMaster.sh)
-    - [runTest.sh](./scr/runTest.sh)
+    - [qiimeInstall.sh](./scr/qiimeInstall.sh) *
+    - [qiimeInstall_community-plugins.sh](./scr/qiimeInstall_community-plugins.sh) *
+    - [runMaster.sh](./scr/runMaster.sh) *
+    - [runTest.sh](./scr/runTest.sh) *
     - [taxa-tsv-to-ivenn.py](./scr/taxa-tsv-to-ivenn.py)
+
+\* Non-executable file; use by running the individual commands
 
 ### Summary
 
