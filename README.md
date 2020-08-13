@@ -10,7 +10,7 @@ This repository contains the necessary documentation and scripts to fully reprod
 
 ### Project report
 
-A report tied to this educational project can be viewed [here]() (not yet available, as of 2020.06.21).
+A report tied to this educational project can be viewed [here]() (not yet available, as of 2020.08.13).
 
 ## Repository structure
 
