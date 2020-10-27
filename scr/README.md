@@ -21,7 +21,7 @@ B   109 501
 
 #### iVenn generation
 
-InteractiVenn is a open-source, free online application, built by Heberle _et al_ [1].
+InteractiVenn is a open-source, free online application, built by Heberle et al. [1].
 
 
 The output of taxa-tsv-to-ivenn.py can be uploaded to the [InteractiVenn website](http://www.interactivenn.net/) in order to produce a Venn diagram.
@@ -72,7 +72,7 @@ Application config directory
 /home/<user>/<dirs>/qiimeProj/qiime2_env/var/q2cli
 ```
 
-### [qiimeInstall_community.sh](./qiimeInstall_community.sh)
+### [qiimeInstall_community-plugins.sh](./qiimeInstall_community-plugins.sh)
 
 Includes commands used for installation of community plugins, available for QIIME 2-2020.2. A full list of available community plugins can be found in the [QIIME 2 inventory](../doc/inventory/q2_inventory.md).
 

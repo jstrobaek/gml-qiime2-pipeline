@@ -10,7 +10,7 @@
 
 # DATA IMPORT
 #
-# [V] Import pre-formated metadata-file (see runTest.sh for formating details).
+# [V] Import pre-formatted metadata-file (see runTest.sh for formatting details).
 # This file is not used in the pipeline, but is still generated for sake of
 # provenance, and adherance to QIIME 2 guidelines.
 qiime metadata tabulate \
@@ -166,12 +166,12 @@ qiime feature-table transpose \
   --o-transposed-feature-table \
   "$PWD"/rst/02-taxonomy/transposed-grouped-taxa-l6-table.qza
 
-# Export the formated taxa-table to BIOM file.
+# Export the formatted taxa-table to BIOM file.
 qiime tools export \
   --input-path "$PWD"/rst/02-taxonomy/transposed-grouped-taxa-l6-table.qza \
   --output-path "$PWD"/rst/00-export
 
-# Convert the QIIME 2 BIOM file to TSV, which can be reformated with the
+# Convert the QIIME 2 BIOM file to TSV, which can be reformatted with the
 # program taxa-tsv-to-ivenn.py--and, subsequently uploaded to
 # http://www.interactivenn.net/ for Venn diagram generation.
 biom convert \

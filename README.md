@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-All documentation and scripts in this repository was produced during a 15cr educational project, performed during a M.Sc. in bioinformatics, at Lund University, Sweden. The main purpose of the content within is therefor to display the results of the aforementioned project, for educational purposes.
+All documentation and scripts in this repository was produced during a [15cr educational project](https://www.lunduniversity.lu.se/lubas/i-uoh-lu-BINP37), performed during the [M.Sc. in bioinformatics](https://www.lunduniversity.lu.se/lubas/i-uoh-lu-NABIF) at [Lund University](https://www.lunduniversity.lu.se/), Sweden. The main purpose of the content within is therefor to display the results of the aforementioned project, for educational purposes.
 
 ## Overview
 
@@ -10,7 +10,7 @@ This repository contains the necessary documentation and scripts to fully reprod
 
 ### Project report
 
-A report tied to this educational project can be viewed [here]() (not yet available, as of 2020.08.13).
+A report tied to this educational project can be viewed [here](https://drive.google.com/file/d/1ZN1WvIm2idcYzcZh-lJD7vpEPywSVB4P/view?usp=sharing).
 
 ## Repository structure
 
@@ -44,7 +44,7 @@ The repository holds the following files, within the given structure:
 
 ### Summary
 
-The [metadata-file](./data/metadata.tsv) holds the metadata specific to the dataset used for all commands found within the [runMaster.sh](./scr/runMaster.sh) script. The file itself was generated using a metadata file related to the GML dataset, with commands found in the [runTest.sh](./scr/runTest.sh) script. The inventory file [q2_inventory.md](./doc/inventory/q2_inventory.md) lists _all_ available plugins for QIIME 2. Whereas [q1_checklist.md](./doc/inventory/q1_checklist.md) is a rundown of the visual output produced with the QIIME 1 pipeline—and references to any equivalent output generated in QIIME 2, during this project. The output structure of the rudimentary QIIME 2 pipeline can be viewed in the [rst/README.md](./scr/README.md)—and "users" are required to produce this directory folder structure to preform the commands available through [runMaster.sh](./scr/runMaster.sh). Another folder structure was followed during testing, and is detailed in comments within [runTest.sh](./scr/runTest.sh). Further information on the script files are found in the [scr/README.md](./scr/README.md), as well as in comments within each individual file.
+The [metadata-file](./data/metadata.tsv) holds the metadata specific to the dataset used for all commands found within the [runMaster.sh](./scr/runMaster.sh) script. The file itself was generated using a metadata file related to the GML dataset, with commands found in the [runTest.sh](./scr/runTest.sh) script. The inventory file [q2_inventory.md](./doc/inventory/q2_inventory.md) lists _all_ available plugins for QIIME 2. Whereas [q1_checklist.md](./doc/inventory/q1_checklist.md) is a rundown of the visual output produced with the QIIME 1 pipeline with references to any equivalent output reproduced—and suggested solutions where missing—in QIIME 2 (using [runMaster.sh](./scr/runMaster.sh)). The output structure of the rudimentary QIIME 2 workflow can be viewed in the [rst/README.md](./scr/README.md)—and "users" are required to produce this directory folder structure to preform the commands available through [runMaster.sh](./scr/runMaster.sh). Another folder structure was followed during testing, and is detailed in comments within [runTest.sh](./scr/runTest.sh). Further information on the script files are found in the [scr/README.md](./scr/README.md), as well as in comments within each individual file.
 
 ## Author(s)
 
