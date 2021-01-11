@@ -1,4 +1,4 @@
-name: /home/yogogoba/Work/qiimeProj/qiime2_env
+name: PATH_TO_ENV_FOLDER
 channels:
   - defaults
 dependencies:
@@ -389,5 +389,4 @@ dependencies:
   - qiime2/label/r2020.2/linux-64::q2-dada2==2020.2.0=py36_0
   - deicode
   - qurro
-prefix: /home/yogogoba/Work/qiimeProj/qiime2_env
-
+prefix: PATH_TO_ENV_FOLDER
