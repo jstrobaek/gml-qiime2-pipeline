@@ -2,6 +2,7 @@
 
 __doc__ = "Convert a BIOM TSV holding taxon-counts categorized by treatment."
 
+
 # IMPORT REQUIRED MODULES #####################################################
 from pathlib import Path
 import argparse
@@ -52,14 +53,13 @@ path = Path(args.infile).resolve().parent  # Set to input file directory.
 
 outdir = Path(path)/"ivenn_input_files"
 outdir.mkdir(parents=True, exist_ok=True)  # If the subdir does
-                                           # not exit create it.
+                                           # not exist create it.
 
 
 # MAIN CODE ###################################################################
 # Convert level from integer to the corresponding character.
 taxonomic_levels = {1:'k', 2:'p', 3:'c', 4:'o', 5:'f', 6:'g', 7:'s'}
 level = taxonomic_levels[args.set_level]  # Defaults to 6 (genus).
-
 
 # Assign output file name, and add extension (.txt chosen for compatibility).
 if args.outfile:
@@ -70,13 +70,11 @@ else:
     suffix = '-l' + str(args.set_level) + '-ivenn.txt'
     outfile = str(outdir/Path(args.infile).stem) + suffix
 
-
 # Initiate required variables.
 all_taxa = []  # Holds the identified taxa.
 treatment_taxa = []  # Builds the treatment specific output.
 print_dict = {}  # Holds treatment associated taxa lists,
                  # to simplify the print process.
-
 
 with open(args.infile, 'r') as input_file:
     # Initialize reader object.
@@ -114,7 +112,6 @@ with open(args.infile, 'r') as input_file:
             # the dictionary, using treatment as key.
             print_dict[treatment] = treatment_taxa
             treatment_taxa = []  # Empty taxa list for next row.
-
 
 # Print the dictionary in the required Ivenn format.
 with open(outfile, 'w') as output_file:
