@@ -6,11 +6,11 @@ All documentation and scripts in this repository was produced during a [15cr edu
 
 ## Overview
 
-This repository contains the necessary documentation and scripts to fully reproduce the project output, given access to the dataset used. Access to which was given by the [Gut Microbiome Laboratory](https://portal.research.lu.se/portal/en/projects/gut-micr\obiome-laboratory\(506d4dc7-f20e-4e33-8824-1ca3f1313925\).html) (GML), with the caveat that it would not be shared publicly. Requests to access this data should therefor be directed at the GML.
+This repository contains the necessary documentation and scripts to fully reproduce the project output, given access to the dataset used. Access to which was given by the [Gut Microbiome Laboratory](https://portal.research.lu.se/portal/en/projects/gut-microbiome-laboratory(506d4dc7-f20e-4e33-8824-1ca3f1313925).html) (GML), with the caveat that it would not be shared publicly. Requests to access this data should therefor be directed at the GML.
 
 ### Project report
 
-A report tied to this educational project can be viewed [here](https://drive.google.com/file/d/1ZN1WvIm2idcYzcZh-lJD7vpEPywSVB4P/view?usp=sharing).
+A report tied to this educational project can be viewed [here](https://drive.google.com/file/d/1lgJPJ-xCnmDy6M2Us_V_-iUwcnfBhYYS/view?usp=sharing).
 
 ## Repository structure
 
